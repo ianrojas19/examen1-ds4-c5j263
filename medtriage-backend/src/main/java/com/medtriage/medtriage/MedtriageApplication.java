@@ -2,7 +2,7 @@ package com.medtriage.medtriage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-// IAN GABRIEL ROJAS SEQUEIRA - C5J263
+// IAN GABRIEL ROJAS SEQUEIRA - C5J263 - COMMIT OF AUTHOR
 
 @SpringBootApplication
 public class MedtriageApplication {
