@@ -1,0 +1,129 @@
+<section class="mx-auto" style="max-width: 760px">
+  <div class="mb-4">
+    <a class="link-secondary text-decoration-none small" routerLink="/citas">← Volver a citas</a>
+    <p class="text-primary fw-semibold text-uppercase small mt-3 mb-1">Registro de atención</p>
+    <h1 class="page-title h2 fw-bold mb-1">Nueva cita</h1>
+    <p class="text-secondary mb-0">Ingresa los datos del paciente y la consulta.</p>
+  </div>
+
+  @if (error()) {
+    <div class="alert alert-danger" role="alert">{{ error() }}</div>
+  }
+
+  <form #citaForm="ngForm" (ngSubmit)="enviar()" class="card shadow-sm">
+    <div class="card-body p-3 p-md-4">
+      <h2 class="h5 mb-1">Datos de la cita</h2>
+      <p class="text-secondary small mb-4">El paciente y el doctor tiene que existir en el sistema.</p>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="pacienteId">ID del paciente</label>
+          <input
+            class="form-control"
+            id="pacienteId"
+            name="pacienteId"
+            type="number"
+            min="1"
+            step="1"
+            required
+            [(ngModel)]="form.pacienteId"
+            #pacienteId="ngModel"
+            [class.is-invalid]="pacienteId.invalid && pacienteId.touched">
+          <div class="form-text">Debe existir en el sistema. En los datos de prueba: ID 1 o 2.</div>
+          @if (pacienteId.invalid && pacienteId.touched) {
+            <div class="invalid-feedback">Ingresa un ID de paciente valido.</div>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="doctorId">ID del Doctor</label>
+          <input
+            class="form-control"
+            id="doctorId"
+            name="doctorId"
+            type="number"
+            min="1"
+            step="1"
+            required
+            [(ngModel)]="form.doctorId"
+            #doctorId="ngModel"
+            [class.is-invalid]="doctorId.invalid && doctorId.touched">
+          <div class="form-text">Debe estar disponible. En los datos de prueba: ID 1 o 2.</div>
+          @if (doctorId.invalid && doctorId.touched) {
+            <div class="invalid-feedback">Ingresa un ID de doctor válido.</div>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="prioridad">Prioridad de triaje</label>
+          <select
+            class="form-control form-select"
+            id="prioridad"
+            name="nivelPrioridad"
+            required
+            [(ngModel)]="form.nivelPrioridad">
+            <option value="ALTA">Alta</option>
+            <option value="MEDIA">Media</option>
+            <option value="BAJA">Baja</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="montoConsulta">Monto de consulta</label>
+          <div class="input-group">
+            <span class="input-group-text">₡</span>
+            <input
+              class="form-control"
+              id="montoConsulta"
+              name="montoConsulta"
+              type="number"
+              min="0.01"
+              step="0.01"
+              required
+              [(ngModel)]="form.montoConsulta"
+              #montoConsulta="ngModel"
+              [class.is-invalid]="montoConsulta.invalid && montoConsulta.touched">
+            @if (montoConsulta.invalid && montoConsulta.touched) {
+              <div class="invalid-feedback">Ingresa un monto mayor que cero.</div>
+            }
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label" for="motivoConsulta">Motivo de consulta</label>
+          <textarea
+            class="form-control"
+            id="motivoConsulta"
+            name="motivoConsulta"
+            rows="4"
+            maxlength="255"
+            required
+            [(ngModel)]="form.motivoConsulta"
+            #motivoConsulta="ngModel"
+            [class.is-invalid]="motivoConsulta.invalid && motivoConsulta.touched"
+            placeholder="Describe brevemente los síntomas o el motivo de atención"></textarea>
+          <div class="d-flex justify-content-between">
+            @if (motivoConsulta.invalid && motivoConsulta.touched) {
+              <div class="text-danger small mt-1">El motivo de consulta es obligatorio.</div>
+            } @else {
+              <div class="form-text">Máximo 255 caracteres.</div>
+            }
+            <small class="form-text">{{ form.motivoConsulta.length }}/255</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer bg-white d-flex flex-wrap justify-content-end gap-2 p-3">
+      <a class="btn btn-outline-secondary" routerLink="/citas">Cancelar</a>
+      <button class="btn btn-primary" type="submit" [disabled]="citaForm.invalid || guardando()">
+        @if (guardando()) {
+          <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+          Guardando...
+        } @else {
+          Registrar cita
+        }
+      </button>
+    </div>
+  </form>
+</section>
