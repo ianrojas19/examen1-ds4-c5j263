@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  color-scheme: light;
+}
+
+body {
+  color: #212529;
+  background-color: #f7f9fb;
+}
+
+.navbar.bg-primary {
+  background-color: #176b9e !important;
+}
+
+.navbar.bg-primary .navbar-brand,
+.navbar.bg-primary .nav-link,
+.navbar.bg-primary .nav-link:hover,
+.navbar.bg-primary .nav-link:focus,
+.navbar.bg-primary .nav-link.active {
+  color: #fff;
+}
+
+.btn-primary {
+  --bs-btn-bg: #176b9e;
+  --bs-btn-border-color: #176b9e;
+  --bs-btn-hover-bg: #12567f;
+  --bs-btn-hover-border-color: #12567f;
+  --bs-btn-active-bg: #104b69;
+  --bs-btn-active-border-color: #104b69;
+    color: #fff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #176b9e;
+  --bs-btn-border-color: #176b9e;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #176b9e;
+  --bs-btn-hover-border-color: #176b9e;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #12567f;
+  --bs-btn-active-border-color: #12567f;
+  color: #000;
+}
+
+.page-title {
+  color: #183b56;
+}
+
+.card {
+  border-color: #e8edf2;
+  background-color: #fff;
+}
+
+.card-header,
+.card-footer {
+  color: #212529;
+  background-color: #fff;
+}
+
+.table {
+  --bs-table-color: #212529;
+  --bs-table-bg: #fff;
+  --bs-table-hover-color: #212529;
+  --bs-table-hover-bg: #f8f9fa;
+  --bs-table-border-color: #dee2e6;
+}
+
+.table-light {
+  --bs-table-color: #212529;
+  --bs-table-bg: #f8f9fa;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.85rem 0.75rem;
+}
+
+.priority-alta {
+  color: #842029;
+  background-color: #f8d7da;
+}
+
+.priority-media {
+  color: #664d03;
+  background-color: #fff3cd;
+}
+
+.priority-baja {
+  color: #084298;
+  background-color: #cfe2ff;
+}
+
+.status-pendiente {
+  color: #664d03;
+  background-color: #fff3cd;
+}
+
+.status-en_atencion {
+  color: #084298;
+  background-color: #cfe2ff;
+}
+
+.status-atendida {
+  color: #0f5132;
+  background-color: #d1e7dd;
+}
+
+.status-cancelada {
+  color: #41464b;
+  background-color: #e2e3e5;
+}
