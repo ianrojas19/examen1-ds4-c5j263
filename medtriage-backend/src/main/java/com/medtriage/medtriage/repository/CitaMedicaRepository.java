@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface CitaMedicaRepository extends JpaRepository<CitaMedica, Long> {
 
-    List<CitaMedica> findByNivelPrioridadOrderByFechaCitaDesc(String nivelPrioridad);
-
     List<CitaMedica> findAllByOrderByFechaCitaDesc();
 
-    boolean existsByCodigoCita(String codigoCita);
+    List<CitaMedica> findByNivelPrioridadOrderByFechaCitaDesc(String prioridad);
+
+    boolean existsByCodigoCita(String codigo);
 }
